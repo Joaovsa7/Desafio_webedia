@@ -1,3 +1,14 @@
+.SearchIconMenu {
+    margin-top: 10px;
+}
+
+.SearchIcon {
+    width: 100%;
+}
+.SearchIcon.noEvents {
+    opacity: 0;
+    pointer-events: none;
+}
 
 .SearchIconMenu.search_active {
     display: none;

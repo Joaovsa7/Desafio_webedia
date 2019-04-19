@@ -1,9 +1,13 @@
+//importando as variaveis 
+@import '../helpers/_variables_animations_mixins.scss';
+//componentes
 @import '../../../componentes/Container/Container.scss';
 @import '../../../componentes/Header/MobileIcon/BurgerMobileMenu.scss';
 @import '../../../componentes/Header/SearchIcon/SearchIcon.scss';
 @import '../../../componentes/Header/SearchBar/SearchBar.scss';
 @import '../../../componentes/Header/CloseBtn/CloseBtn.scss';
 @import '../../../componentes/Header/Header.scss';
-@import '../../../componentes/Menu/Menu.scss';
+@import '../../../componentes/Header/HeaderMenu/HeaderMenu.scss';
+@import '../../../componentes/OverlayComponent/Overlay.scss';
 @import '../../../componentes/Logo/Logo.scss';
 

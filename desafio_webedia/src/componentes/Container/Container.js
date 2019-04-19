@@ -1,10 +1,8 @@
 import React from 'react';
 
-
-
 const Container = (props) => {
     return ( 
-        <div id="container">
+        <div className="container">
             {props.children}
         </div>
      );
