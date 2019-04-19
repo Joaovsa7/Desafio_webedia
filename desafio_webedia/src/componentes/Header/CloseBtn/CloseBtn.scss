@@ -1,0 +1,23 @@
+.CloseBtn {
+    position: absolute;
+    margin-top: 5px;
+    right: 0;
+    width: 49px;
+    height: 49px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    > button {
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
+
+
+@media only screen and (min-width: 1024px){
+    .CloseBtn {
+        display: none;
+    }
+}

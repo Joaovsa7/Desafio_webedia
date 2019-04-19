@@ -1,0 +1,12 @@
+    .webedia_logo {
+        margin-top: 10px;
+        width: 50%;
+        display: inline-block;
+        > img {
+            width: 100%;
+        }
+    }
+    .webedia_logo.search_active {
+        display: none;
+    }
+    

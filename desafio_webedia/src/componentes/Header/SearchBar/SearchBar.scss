@@ -1,0 +1,25 @@
+#searchForm {
+    right:0;
+    width: 270px;
+    margin-top: 10px;
+    > input {
+        height: 44px;
+        width: 230px;
+    }
+    > .inputDesktop {
+        padding: 0px 20px;
+        border-radius: 22px;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    }
+    .inputMobile {
+        width: 100%;
+        padding: 0px 0px 0px 45px;
+        border-radius: 9px;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    }
+    > button {
+        position: absolute;
+        top: 19px;
+        left: 5px;
+    }
+}

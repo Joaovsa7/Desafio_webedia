@@ -1,0 +1,10 @@
+
+.SearchIconMenu.search_active {
+    display: none;
+}
+
+@media only screen and (min-width: 1024px){
+    .SearchIconMenu {
+        display: none;
+    }
+}
