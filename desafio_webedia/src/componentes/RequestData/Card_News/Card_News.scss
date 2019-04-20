@@ -1,6 +1,6 @@
 .News_container {
     width: 100%;
-    margin-top: 10%;
+    margin: 10% 0%;
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 20px;
@@ -9,10 +9,14 @@
         border-radius: 4px;
         background-color: white;
         box-shadow: $default_box_shadow;
-        > img {
-            height: 50%;
+        > .imgBox {
             width: 100%;
+            height: 100%;
             border-radius: inherit;
+            > img {
+                border-radius: inherit;
+                width: inherit;
+            }
         }
         > .infos {
             width: 90%;
@@ -28,6 +32,7 @@
                 font-weight: 600;
                 margin: 8px 0px;
                 color: $blue_theme;
+                word-break: normal;
                 > a {
                     color: inherit;
                     text-decoration: none;
@@ -36,10 +41,14 @@
                     }
                 }
             }
-            > p {
+            > .description {
                 color: $gray_text;
                 margin: 2px 0px;
                 font-size: 14px;
+            }
+            > .author {
+                color: $blue_theme;
+                font-weight: bold;
             }
         }
     }
