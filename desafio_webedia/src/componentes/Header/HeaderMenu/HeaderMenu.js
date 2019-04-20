@@ -5,11 +5,11 @@ import CloseBtn from '../CloseBtn/CloseBtn';
 
 const HeaderMenu = ({MobileMenuActive, CloseMenu}) => {
     const menuItems = [
+        {countryId: 'top', name: 'Notícias em Destaque'},
         {countryId: 'br', name: 'Notícias do Brasil'},
+        {countryId: 'br', name: 'Notícias do EUA '},
         {countryId: 'br', name: 'Notícias da Argentina'},
-        {countryId: 'br', name: 'Notícias da '},
-        {countryId: 'br', name: 'Notícias do Brazil'},
-        {countryId: 'br', name: 'Notícias do Brazil'},
+        {countryId: 'br', name: 'Notícias da França'},
     ]
     return ( 
         <nav className={MobileMenuActive ? 'enter' : ''}>
