@@ -10,12 +10,19 @@
         background-color: white;
         box-shadow: $default_box_shadow;
         > .imgBox {
-            width: 100%;
-            height: 100%;
-            border-radius: inherit;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $gray_text;
+            background-size: cover;
+            width: 95vw;
+            height: 200px;
+            border-radius: 4px 4px 0px 0px;
+            text-align: center;
             > img {
+                max-width: 100%;
+                max-height: 100%;
                 border-radius: inherit;
-                width: inherit;
             }
         }
         > .infos {
@@ -52,4 +59,34 @@
             }
         }
     }
+    @media only screen and (min-width: 768px){
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        > .News {
+            width: 48%;
+            margin: 25px 0px;
+            > .imgBox {
+                height: 320px;
+                max-width: 100%;
+                > img {
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+            }
+        }
+    }
+}
+
+.col-0 {
+    width: 45%;
+}
+
+.col-1 {
+    width: 45%;
+}
+
+.col-3 {
+    column-span: 3/3;
 }

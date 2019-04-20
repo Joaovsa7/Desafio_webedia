@@ -40,6 +40,11 @@ nav {
             }
         }
     }
+    @media screen {
+        @media screen and (min-width: 1024px){
+            display: none;
+        }
+    }
 }
 nav.enter {
     position: fixed;

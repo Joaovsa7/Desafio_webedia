@@ -9,12 +9,13 @@ function NewsContainer({ News, searchError, textSearched }){
         if(findPoint !== -1){
            return description.slice(0, findPoint).concat(".")
         }
-        else if(description.length <= 0){
+        if(description.length <= 0){
             return description.concat("Esta notícia não contém uma descrição, clique no título para acessá-la por completo.")
         }
         else{
             return description.slice(0, 120).concat("...")
         }
+
     }
 
     //formatando a data para o padrao brasileiro, DD/MM/YYYY
@@ -40,14 +41,14 @@ function NewsContainer({ News, searchError, textSearched }){
                     !searchError ? 
                         ( 
                             News.map(({source, description, publishedAt, title, url, urlToImage}, index) => (
-                                <div className={`News col-${index}`}>
+                                <div className={`News  col-${index}`}>
                                     <div className="imgBox">
                                         <img alt="Imagem da news" src={urlToImage} />
                                     </div>
                                     <div className="infos">
                                         {publishedAt ? ( <span>{formatPublishedAt(publishedAt)}</span> ) : 'Sem data'}
                                         <h3><a href={url} target="_blank" rel="noopener noreferrer">{title}</a></h3>
-                                        <p className="description">{reduceDescription(description)}</p>
+                                        <p className="description">{description ? ( reduceDescription(description) ) : 'Esta matéria não possue uma descrição'}</p>
                                         <p className="author">{source ? ( `POR: ${formatSourceNews(source.name)}` ) : 'POR: DESCONHECIDO'}</p>
                                     </div>
                                 </div>
