@@ -6,7 +6,7 @@ import SearchBar from './SearchBar/SearchBar';
 import HeaderMenu from './HeaderMenu/HeaderMenu';
 import OverlayComponent from '../OverlayComponent/Overlay';
 
-export default function Header(){
+export default function Header({ ChangeFetchParams }){
 
     const [SearchActive, setSearchActive] = useState(false);
     const [MobileMenuActive, setMobileMenuActive] = useState(false); 
@@ -18,7 +18,7 @@ export default function Header(){
                     <Logo logoPath={require("../../static/img/logo.png")} target={""} searchActive={SearchActive} />
                     <SearchIconMenu searchActive={SearchActive} enableSearch={() => setSearchActive(true)} MobileMenuActive={MobileMenuActive} />
                     {SearchActive ? <SearchBar CloseSearchBar={() => setSearchActive(false)} /> : null}
-                    <HeaderMenu MobileMenuActive={MobileMenuActive} CloseMenu={() => setMobileMenuActive(false)} />
+                    <HeaderMenu MobileMenuActive={MobileMenuActive} ChangeFetchParams={ChangeFetchParams} CloseMenu={() => setMobileMenuActive(false)} />
                     { MobileMenuActive && <OverlayComponent /> }
                 </header>
     )

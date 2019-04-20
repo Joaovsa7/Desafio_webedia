@@ -23,11 +23,14 @@ export default function RequestData(){
         console.log(ArticlesNews)
     }
 
-    useEffect(() => {FetchNews()}, [])
+    useEffect(() => {
+        FetchNews();
+        return () => FetchNews()
+    }, [])
 
     return ( 
             <React.Fragment>
-                <Header />
+                <Header ChangeFetchParams={FetchNews} />
                 <CardNews News={ArticlesNews} />
             </React.Fragment>
      );

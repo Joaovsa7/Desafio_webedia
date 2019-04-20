@@ -3,8 +3,7 @@ import React from 'react';
 function NewsContainer({ News }){
     //esta funcao vai reduzir a descricao da noticia quando encontrar o primeiro ponto final
     function reduceDescription(description){
-        let reduceText = description.indexOf(".")
-        return description.slice(0, reduceText)
+        return description.slice(0, 120)
     }
     console.log(News)
     //Como algumas notícias não possuem o autor no json, preciso verificar
@@ -17,7 +16,6 @@ function NewsContainer({ News }){
                             <div className="infos">
                                 <span>{publishedAt}</span>
                                 <h3><a href={url} target="_blank" rel="noopener noreferrer">{title}</a></h3>
-                                <p>{reduceDescription(description)}</p>
                             </div>
                         </div>
                     ))

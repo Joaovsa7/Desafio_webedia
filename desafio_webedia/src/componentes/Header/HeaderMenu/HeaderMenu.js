@@ -1,11 +1,12 @@
 import React from 'react';
 import CloseBtn from '../CloseBtn/CloseBtn';
 
-export default function HeaderMenu({ MobileMenuActive, CloseMenu }){
+export default function HeaderMenu({ MobileMenuActive, CloseMenu, ChangeFetchParams }){
 
     function getReqCountryId(e){
         e.preventDefault();
-        console.log(e.target.id)
+        ChangeFetchParams(e.target.id, false)
+        MobileMenuActive && CloseMenu()
     }
 
     return ( 
