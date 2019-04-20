@@ -1,22 +1,19 @@
-import React, {useState} from 'react';
-import PropTypes from 'prop-types';
-import { Link }  from 'react-router-dom';
+import React from 'react';
 import CloseBtn from '../CloseBtn/CloseBtn';
 
-const HeaderMenu = ({MobileMenuActive, CloseMenu}) => {
-    const menuItems = [
-        {countryId: 'top', name: 'Notícias em Destaque'},
-        {countryId: 'br', name: 'Notícias do Brasil'},
-        {countryId: 'br', name: 'Notícias do EUA '},
-        {countryId: 'br', name: 'Notícias da Argentina'},
-        {countryId: 'br', name: 'Notícias da França'},
-    ]
+export default function HeaderMenu({ MobileMenuActive, CloseMenu }){
+
+    function getReqCountryId(e){
+        e.preventDefault();
+        console.log(e.target.id)
+    }
+
     return ( 
         <nav className={MobileMenuActive ? 'enter' : ''}>
             <ul>
                 {
-                    menuItems.map((item) => (
-                        <li><Link>{item.name}</Link></li>
+                    MenuItems.map(({id, req_country_id, name}) => (
+                        <li key={id} id={req_country_id} onClick={getReqCountryId}>{name}</li>
                     ))
                 }
             </ul>
@@ -24,5 +21,32 @@ const HeaderMenu = ({MobileMenuActive, CloseMenu}) => {
         </nav>
     );
 }
- 
-export default HeaderMenu;
+
+const MenuItems = [
+    {
+        id: 1 + Math.random().toString(36).substring(7),
+        req_country_id: "",
+        name: 'Notícias em Destaque'
+    },
+    {
+        id: 2 + Math.random().toString(36).substring(7),
+        req_country_id: 'br',
+        name: 'Notícias do Brasil'
+    },
+    {
+        id: 3 + Math.random().toString(36).substring(7),
+        req_country_id: 'us',
+        name: 'Notícias dos EUA'
+    },
+    {
+        id: 4 + Math.random().toString(36).substring(7),
+        req_country_id: 'ar',
+        name: 'Notícias da Argentina'
+    },
+    {
+        id: 5 + Math.random().toString(36).substring(7),
+        req_country_id: 'fr',
+        name: 'Notícias da França'
+    }
+
+]

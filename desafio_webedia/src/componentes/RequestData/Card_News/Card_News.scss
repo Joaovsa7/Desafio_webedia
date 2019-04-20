@@ -1,0 +1,46 @@
+.News_container {
+    width: 100%;
+    margin-top: 10%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    > .News {
+        width: 100%;
+        border-radius: 4px;
+        background-color: white;
+        box-shadow: $default_box_shadow;
+        > img {
+            height: 50%;
+            width: 100%;
+            border-radius: inherit;
+        }
+        > .infos {
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 10px;
+            > span {
+                color: $gray_text;
+                font-size: 15px;
+            }
+            > h3 {
+                font-size: 18px;
+                font-weight: 600;
+                margin: 8px 0px;
+                color: $blue_theme;
+                > a {
+                    color: inherit;
+                    text-decoration: none;
+                    &:visited {
+                        color: inherit;
+                    }
+                }
+            }
+            > p {
+                color: $gray_text;
+                margin: 2px 0px;
+                font-size: 14px;
+            }
+        }
+    }
+}

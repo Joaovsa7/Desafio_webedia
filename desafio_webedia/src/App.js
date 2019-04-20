@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Header from './componentes/Header/Header';
 import Container from './componentes/Container/Container';
+import NewsContainer from './componentes/RequestData/Card_News/Card_News';
+import RequestData from './componentes/RequestData/RequestData';
 
 
-class App extends Component {
-  render() {
+export default function App() {
       return (
               <React.Fragment>
                   <Container>
-                    <Header />
+                    <RequestData />
                   </Container>
               </React.Fragment>
         );
-    }
 }
-
-export default App;

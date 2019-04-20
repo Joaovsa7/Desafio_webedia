@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Logo = ({href,searchActive, logoPath, target, MobileMenuActive}) => {
+export default function Logo({href,searchActive, logoPath, target, MobileMenuActive}){
     return ( 
-            <a href={href} className={"webedia_logo" + (searchActive || MobileMenuActive ? ' search_active' : '')} target={target} rel={`${target ? "noopener noreferrer" : false}`}>
+            <a href={href} className={"webedia_logo" + (searchActive || MobileMenuActive ? ' search_active' : '')} target={target} 
+            rel={`${target ? "noopener noreferrer" : false}`}>
                 <img src={logoPath} alt="Webedia logo"  />
             </a>
      );
@@ -19,5 +20,3 @@ Logo.propTypes = {
 Logo.defaultProps = {
     href: '/',
 }
-
-export default Logo;

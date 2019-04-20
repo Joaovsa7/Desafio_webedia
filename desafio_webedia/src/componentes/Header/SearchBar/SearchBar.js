@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CloseBtn from '../CloseBtn/CloseBtn';
 
-const SearchBar = ({CloseSearchBar}) => {
+export default function SearchBar({ CloseSearchBar }){
     return (
         <React.Fragment>
             <form id="searchForm">
@@ -15,5 +15,3 @@ const SearchBar = ({CloseSearchBar}) => {
         </React.Fragment>
      );
 }
- 
-export default SearchBar;

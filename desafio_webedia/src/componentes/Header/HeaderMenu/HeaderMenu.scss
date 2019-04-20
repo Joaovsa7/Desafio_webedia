@@ -23,20 +23,14 @@ nav {
         > li {
             margin: 15px 0px;
             list-style-type: none;
-            > a {
-                text-decoration: none;
-                &:visited {
-                    color: $blue_theme;
-                }
-                @media only screen and (max-width: 768px){
-                    &::after {
-                        content: '';
-                        display: block;
-                        margin-top: 10px;
-                        height: 3px;
-                        width: 100%;
-                        background-color:#f1eff1;
-                    }
+            @media only screen and (max-width: 768px){
+                &::after {
+                    content: '';
+                    display: block;
+                    margin-top: 10px;
+                    height: 3px;
+                    width: 100%;
+                    background-color:#f1eff1;
                 }
             }
             &:nth-child(1){

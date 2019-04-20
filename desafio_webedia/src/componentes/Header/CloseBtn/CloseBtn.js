@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CloseBtn = ({onClick, MobileMenuActive}) => {
+export default function CloseBtn({ onClick, MobileMenuActive }){
     return ( 
             <div className={"CloseBtn" + (MobileMenuActive ? ' Menu' : ' SearchBar')}>
                 <button type="button" onClick={onClick}>X</button>
@@ -12,5 +12,3 @@ const CloseBtn = ({onClick, MobileMenuActive}) => {
 CloseBtn.propTypes = {
     onClick: PropTypes.func.isRequired
 }
- 
-export default CloseBtn;

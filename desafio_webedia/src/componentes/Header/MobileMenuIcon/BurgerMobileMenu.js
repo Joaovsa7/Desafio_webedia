@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const BurgerMobileMenu = ({searchActive, clickMenu, MobileMenuActive}) => {
+export default function BurgerMobileMenu({searchActive, clickMenu}){
     return ( 
         <div className={"BurgerMobileMenu" + (searchActive ? ' search_active' : '')}>
-            <img className="MobileIcon" src={require("../../../static/img/burger_menu.png")} onClick={clickMenu} alt="Clique para abrir o menu" />
+            <img className="MobileIcon" src={require("../../../static/img/burger_menu.png")} 
+            onClick={clickMenu} alt="Clique para abrir o menu" />
         </div>
      );
 }
@@ -12,5 +13,3 @@ const BurgerMobileMenu = ({searchActive, clickMenu, MobileMenuActive}) => {
 BurgerMobileMenu.propTypes = {
     searchActive: PropTypes.bool.isRequired,
 }
- 
-export default BurgerMobileMenu;
