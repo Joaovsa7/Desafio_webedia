@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense, lazy } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import CardNews from './Card_News/Card_News';
 import Footer from '../Footer/Footer';
@@ -27,7 +27,14 @@ export default function RequestData(){
             setLoading(false)
             setArticlesNews(News.articles)
         }
-        console.log(ArticlesNews)
+        if(News.totalResults === 0){
+            setLoading(false)
+            setError(true)
+            console.log(News.totalResults)
+        }
+        if(News.status !== "ok"){
+            console.log('babo')
+        }
     }
 
     useEffect(() => {
@@ -39,7 +46,7 @@ export default function RequestData(){
             <div>
                 <Container>
                     <Header ChangeFetchParams={FetchNews} />
-                    { loading ? ( <LoadingComponent /> ) : ( <CardNews News={ArticlesNews} /> )}
+                    { loading ? ( <LoadingComponent /> ) : ( <CardNews News={ArticlesNews} searchError={error} /> )}
                 </Container>
                 <Footer />
             </div>

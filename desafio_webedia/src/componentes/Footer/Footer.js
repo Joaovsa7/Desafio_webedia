@@ -4,9 +4,11 @@ import Logo from '../Logo/Logo';
 const styles = {
     footer: {
         width: '100%',
+        height: '10vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: 'white',
-        padding: "40px 0",
-        textAlign: 'center',
         position: 'absolute',
     }
 }

@@ -17,7 +17,7 @@ export default function Header({ ChangeFetchParams }){
                     <BurgerMobileMenu searchActive={SearchActive} MobileMenuActive={MobileMenuActive} clickMenu={() => setMobileMenuActive(true)} />
                     <Logo logoPath={require("../../static/img/logo.png")} target={""} searchActive={SearchActive} />
                     <SearchIconMenu searchActive={SearchActive} enableSearch={() => setSearchActive(true)} MobileMenuActive={MobileMenuActive} />
-                    {SearchActive ? <SearchBar CloseSearchBar={() => setSearchActive(false)} /> : null}
+                    {SearchActive ? <SearchBar  ChangeFetchParams={ChangeFetchParams} CloseSearchBar={() => setSearchActive(false)} /> : null}
                     <HeaderMenu MobileMenuActive={MobileMenuActive} ChangeFetchParams={ChangeFetchParams} CloseMenu={() => setMobileMenuActive(false)} />
                     { MobileMenuActive && <OverlayComponent /> }
                 </header>

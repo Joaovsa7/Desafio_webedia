@@ -1,6 +1,6 @@
 import React from 'react';
 
-function NewsContainer({ News }){
+function NewsContainer({ News, searchError, textSearched }){
     function reduceDescription(description){
             //esta funcao vai reduzir a descricao da noticia quando encontrar o primeiro ponto final
             //caso nao haja nenhuma descricao vindo da api, ela vai sugerir que o usuario clique no titul da noticia para lê-la
@@ -33,24 +33,28 @@ function NewsContainer({ News }){
             return source.toUpperCase()
         }
     }
-    console.log(News)
     //Como algumas notícias não possuem o autor no json, preciso verificar
     return ( 
             <section className="News_container">
                 {
-                    News.map(({source, description, publishedAt, title, url, urlToImage}, index) => (
-                        <div className={`News col-${index}`}>
-                            <div className="imgBox">
-                                <img alt="Imagem da news" src={urlToImage} />
-                            </div>
-                            <div className="infos">
-                                {publishedAt ? ( <span>{formatPublishedAt(publishedAt)}</span> ) : 'Sem data'}
-                                <h3><a href={url} target="_blank" rel="noopener noreferrer">{title}</a></h3>
-                                <p className="description">{reduceDescription(description)}</p>
-                                <p className="author">{source ? ( `POR: ${formatSourceNews(source.name)}` ) : 'POR: DESCONHECIDO'}</p>
-                            </div>
-                        </div>
-                    ))
+                    !searchError ? 
+                        ( 
+                            News.map(({source, description, publishedAt, title, url, urlToImage}, index) => (
+                                <div className={`News col-${index}`}>
+                                    <div className="imgBox">
+                                        <img alt="Imagem da news" src={urlToImage} />
+                                    </div>
+                                    <div className="infos">
+                                        {publishedAt ? ( <span>{formatPublishedAt(publishedAt)}</span> ) : 'Sem data'}
+                                        <h3><a href={url} target="_blank" rel="noopener noreferrer">{title}</a></h3>
+                                        <p className="description">{reduceDescription(description)}</p>
+                                        <p className="author">{source ? ( `POR: ${formatSourceNews(source.name)}` ) : 'POR: DESCONHECIDO'}</p>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <span>Infelizmente a sua busca não retornou em nehum resultado</span>
+                        )
                 }
             </section>
      );
