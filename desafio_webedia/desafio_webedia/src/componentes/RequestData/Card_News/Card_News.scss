@@ -64,18 +64,17 @@
         }
     }
     @media only screen and (min-width: 768px){
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        margin: 1% auto;
         max-width: $container_width;
-        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        flex-flow: wrap;
         > .News {
+            margin: 10px 0px;
             width: 48%;
             height: 550px;
-            margin: 25px 0px;
             > .imgBox {
-                height: 320px;
+                height: 280px;
                 max-width: 100%;
                 > img {
                     max-width: 100%;
@@ -83,9 +82,10 @@
                 }
             }
             > .infos {
-                height: 230px;
+                margin-top: 20px;
+                height: 240px;
                 > h3 {
-                    font-size: 20px;
+                    font-size: 18px;
                 }
                 > span {
                     font-size: 18px;
@@ -96,18 +96,34 @@
                     font-size: 17px;
                 }
             }
+            &:hover {
+                transition: all .3s;
+                transform: scale(1.05);
+            }
+            &:nth-child(3){
+                width: 30%;
+            }
+            &:nth-child(4){
+                width: 30%;
+            }
+            &:nth-child(5){
+                width: 30%;
+            }
         }
     }
-}
-
-.col-0 {
-    width: 45%;
-}
-
-.col-1 {
-    width: 45%;
-}
-
-.col-3 {
-    column-span: 3/3;
+    @media only screen and (min-width: 1200px){
+        > .News{
+            width: 470px;
+            margin: 20px 0px;
+            &:nth-child(3){
+                width: 31%;
+            }
+            &:nth-child(4){
+                width: 31%;
+            }
+            &:nth-child(5){
+                width: 31%;
+            }
+        }
+    }
 }

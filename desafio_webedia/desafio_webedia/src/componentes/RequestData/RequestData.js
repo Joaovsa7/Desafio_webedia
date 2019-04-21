@@ -25,7 +25,8 @@ export default function RequestData(){
         }
         const data = await fetch(url, {signal: signal})
         const News = await data.json()
-        const pages = Math.ceil(News.articles.length/7)
+        const limit = 7
+        News.articles.length = 7
         if(News.status === "ok"){
             setLoading(false)
             setArticlesNews(News.articles)
