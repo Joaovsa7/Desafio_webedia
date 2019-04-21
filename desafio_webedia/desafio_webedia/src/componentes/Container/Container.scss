@@ -1,13 +1,13 @@
 .container {
     margin: 0 auto;
-    max-width: 95vw;
     width: 100%;
     height: 100%;
+    max-width: 95vw;
     min-height: 90vh;
 }
-@media screen and (min-width: 1024px){
+@media screen and (min-width: $md_device){
     .container {
-        max-width: 962px;
+        max-width: 100vw;
         margin: 0 auto;
     }
 }

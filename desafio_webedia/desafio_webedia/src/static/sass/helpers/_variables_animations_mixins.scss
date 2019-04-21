@@ -4,6 +4,12 @@ $color_psd: #f1eff1;
 $blue_theme: #7ca3d2;
 $gray_text: #a9a9a9;
 
+//medium device, tablet
+$md_device: 768px;
+
+//container segundo o psd
+$container_width:962px;
+
 //animacao padrao de entrada do botão de fechar
 @keyframes EntradaCloseBtn {
     0% {
@@ -44,5 +50,27 @@ $gray_text: #a9a9a9;
 
     100% {
         transform: scale(0)
+    }
+}
+
+@keyframes newsInputRightToLeft {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes newsInputLeftToRight {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
     }
 }

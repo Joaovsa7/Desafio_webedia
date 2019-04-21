@@ -26,7 +26,7 @@
     left: 105%;
 }
 
-@media only screen and (min-width: 1024px){
+@media only screen and (min-width: $md_device){
     .CloseBtn {
         display: none;
     }

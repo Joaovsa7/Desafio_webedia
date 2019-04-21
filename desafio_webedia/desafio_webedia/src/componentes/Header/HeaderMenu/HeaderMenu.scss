@@ -8,16 +8,13 @@ nav {
     left: -8px;
     top: 0;
     transition: .5s all;
-    transform: translate(-350px);
-    @media only screen and (min-width: 409px){
-        width: 86%;
-    }
+    transform: translateX(-150%);
     > ul {
         display: flex;
         align-items: flex-start;
         justify-content: space-around;
         flex-direction: column;
-        top:30px;
+        top: 30px;
         color: $blue_theme;
         list-style-type: none;
         text-transform: uppercase;
@@ -39,10 +36,31 @@ nav {
                 margin-top: 0;
             }
         }
+    }    
+    
+    @media only screen and (min-width: 409px){
+        width: 86%;
     }
-    @media screen {
-        @media screen and (min-width: 1024px){
-            display: none;
+    @media screen and (min-width:$md_device){
+        margin-top: 2%;
+        max-height: 52px;
+        width: 100%;
+        position: relative;
+        transform: translate(0);
+        transition: none;
+        > ul {
+            padding: 0px;
+            height: 100%;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            max-width: $container_width;
+            margin: 0 auto;
+            top: 0;
+            > li {
+                padding: 0;
+                margin: 0;
+            }
         }
     }
 }

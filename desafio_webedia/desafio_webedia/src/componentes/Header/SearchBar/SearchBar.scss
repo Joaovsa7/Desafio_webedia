@@ -1,12 +1,9 @@
 .formBox {
     display: none;
     > #searchForm {
-        right:0;
-        width: 100%;
         margin-top: 10px;
         > input {
             height: 44px;
-            width: 100%;
             box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
             padding: 0px 0px 0px 45px;
             border-radius: 9px;
@@ -19,35 +16,34 @@
             left: 5px;
         }
     }
-    @media screen and (min-width: 1024px){
+    @media screen and (min-width: $md_device){
+        display: block;
         height: 60px;
-        width: 250px;
+        position: relative;
         > #searchForm {
+            width: inherit;
             > input {
+                width: 223px;
                 border-radius: 50px;
             }
             > button {
-                position: relative;
-                top: -35px;
-                right: 0;
-                left: 100%;
+                position: absolute;
+                top: 20px;
+                left: 85%;
             }
         }
-    }
-    @media only screen and (min-width: 768px){
-        display: block;
     }
 }
 
 .formBox.showing {
     width: 100%;
     display: block;
-    > #searchForm > input {
-        @media only screen and (min-width: 375px){
-            width: 70%;
-        }
-        @media only screen and (max-width: 360px){
-            width: 68%;
+    > #searchForm {
+        > input {
+            width: 69%;
+            @media only screen and (min-width: 568px){
+                width: 80%;
+            }
         }
     }
 }

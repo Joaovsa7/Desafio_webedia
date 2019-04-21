@@ -3,8 +3,8 @@ import RequestData from './componentes/RequestData/RequestData';
 
 export default function App() {
       return (
-              <div>
-                    <RequestData />
-              </div>
-        );
+            <React.Fragment>
+              <RequestData />
+            </React.Fragment>
+      );
 }
