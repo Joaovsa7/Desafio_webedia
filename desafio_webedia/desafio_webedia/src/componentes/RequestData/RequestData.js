@@ -5,6 +5,7 @@ import Footer from '../Footer/Footer';
 import LoadingComponent from '../Loading/Loading';
 import Container from '../Container/Container';
 import ErrorComponent from '../Error/Error';
+import { list } from 'postcss';
 
 export default function RequestData(){
     const [ArticlesNews, setArticlesNews] = useState([]);
@@ -15,15 +16,17 @@ export default function RequestData(){
 
         setLoading(true)
         //carregar as principais noticias do brasil no momento
-        let url = `https://newsapi.org/v2/top-headlines?country=br&apiKey=4712473a768541adbee8210942d58a42`
+        let url = `https://newsapi.org/v2/top-headlines?country=br&pageSize=100&apiKey=4712473a768541adbee8210942d58a42`
         if(country_key){
-            url = `https://newsapi.org/v2/top-headlines?country=${country_key}&apiKey=4712473a768541adbee8210942d58a42`
+            url = `https://newsapi.org/v2/top-headlines?country=${country_key}&pageSize=100&apiKey=4712473a768541adbee8210942d58a42`
         }
         else if(userText){
-            url = `https://newsapi.org/v2/everything?q=${userText}&apiKey=4712473a768541adbee8210942d58a42`
+            url = `https://newsapi.org/v2/everything?q=${userText}&pageSize=100&apiKey=4712473a768541adbee8210942d58a42`
         }
         const data = await fetch(url, {signal: signal})
         const News = await data.json()
+        const pages = Math.ceil(News.articles.length/7)
+        console.log(pages)
         if(News.status === "ok"){
             setLoading(false)
             setArticlesNews(News.articles)
@@ -39,6 +42,7 @@ export default function RequestData(){
     }
 
     useEffect(() => {
+        
         const abortController = new AbortController()
         const signal = abortController.signal
 

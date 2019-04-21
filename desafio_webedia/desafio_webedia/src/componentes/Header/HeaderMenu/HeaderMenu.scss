@@ -7,7 +7,6 @@ nav {
     width: 83.7%;
     left: -8px;
     top: 0;
-    transition: .5s all;
     transform: translateX(-150%);
     > ul {
         display: flex;
@@ -44,10 +43,11 @@ nav {
     @media screen and (min-width:$md_device){
         margin-top: 2%;
         max-height: 52px;
-        width: 100%;
+        width: 100vw;
         position: relative;
         transform: translate(0);
         transition: none;
+        box-shadow: $default_box_shadow;
         > ul {
             padding: 0px;
             height: 100%;

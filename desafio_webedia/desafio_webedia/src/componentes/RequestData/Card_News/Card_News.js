@@ -41,7 +41,7 @@ function NewsContainer({ News, searchError, textSearched }){
                     !searchError ? 
                         ( 
                             News.map(({source, description, publishedAt, title, url, urlToImage}, index) => (
-                                <div className={`News  col-${index}`}>
+                                <div className={`News  col-${index}`} key={index}>
                                     <div className="imgBox">
                                         <img alt="Imagem da news" src={urlToImage} />
                                     </div>

@@ -19,4 +19,5 @@ Logo.propTypes = {
 
 Logo.defaultProps = {
     href: '/',
+    searchActive: false
 }
