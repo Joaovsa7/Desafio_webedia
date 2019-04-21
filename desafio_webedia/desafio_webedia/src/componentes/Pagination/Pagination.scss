@@ -1,0 +1,17 @@
+.pagination {
+    width: 100%;
+    border: 1px solid red;
+    margin-bottom: 50px;
+    > ol {
+        display: flex;
+        justify-content: space-around;
+        > li {
+            height: 40px;
+            width: 40px;
+            border-radius: 50px;
+            color: white;
+            background-color: $blue_theme;
+            text-align: center;
+        }
+    }
+}

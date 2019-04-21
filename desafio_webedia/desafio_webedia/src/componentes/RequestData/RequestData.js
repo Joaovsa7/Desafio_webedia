@@ -5,14 +5,14 @@ import Footer from '../Footer/Footer';
 import LoadingComponent from '../Loading/Loading';
 import Container from '../Container/Container';
 import ErrorComponent from '../Error/Error';
-import { list } from 'postcss';
 
 export default function RequestData(){
+
     const [ArticlesNews, setArticlesNews] = useState([]);
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(false)
+    const [error, setError] = useState({error: false, msg:'', reload: false})
     
-    async function FetchNews(country_key, userText, signal){
+    async function FetchNews(country_key = null, userText = null, signal){
 
         setLoading(true)
         //carregar as principais noticias do brasil no momento
@@ -26,15 +26,14 @@ export default function RequestData(){
         const data = await fetch(url, {signal: signal})
         const News = await data.json()
         const pages = Math.ceil(News.articles.length/7)
-        console.log(pages)
         if(News.status === "ok"){
             setLoading(false)
             setArticlesNews(News.articles)
         }
         if(News.totalResults === 0){
             setLoading(false)
-            setError(true)
-            console.log(News.totalResults)
+            setError({error: true, msg: `Lamentamos, mas a busca por ${userText} não encontrou resultados`, reload: true})
+            return false
         }
         if(News.status !== "ok"){
             setError(true)
@@ -42,11 +41,10 @@ export default function RequestData(){
     }
 
     useEffect(() => {
-        
         const abortController = new AbortController()
         const signal = abortController.signal
-
-        FetchNews("","", signal);
+        setError(false)
+        FetchNews(null,null, signal);
         return function cleanup(){
             abortController.abort()
         }
@@ -54,13 +52,14 @@ export default function RequestData(){
     
 
     return ( 
-            <div>
+            <React.Fragment>
                 <Container>
-                    <Header ChangeFetchParams={FetchNews} />
-                    { loading ? ( <LoadingComponent /> ) : ( <CardNews News={ArticlesNews} searchError={error} /> )}
+                    <Header ChangeFetchParams={FetchNews} setError={setError} />
+                    { loading ? ( <LoadingComponent /> ) : ( <CardNews News={ArticlesNews} searchError={error.error} setError={setError} /> )}
                 </Container>
                 <Footer />
-            </div>
+                {error.error && <ErrorComponent error={error.error} message={error.msg} reloadPage={error.reload}  /> }
+            </React.Fragment>
      );
 }
  

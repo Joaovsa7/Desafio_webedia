@@ -1,6 +1,8 @@
 import React from 'react';
+import Pagination from '../../Pagination/Pagination';
+import ErrorComponent from '../../Error/Error';
 
-function NewsContainer({ News, searchError, textSearched }){
+function NewsContainer({ News, setError, searchError }){
     function reduceDescription(description){
             //esta funcao vai reduzir a descricao da noticia quando encontrar o primeiro ponto final
             //caso nao haja nenhuma descricao vindo da api, ela vai sugerir que o usuario clique no titul da noticia para lê-la
@@ -38,9 +40,7 @@ function NewsContainer({ News, searchError, textSearched }){
     return ( 
             <section className="News_container">
                 {
-                    !searchError ? 
-                        ( 
-                            News.map(({source, description, publishedAt, title, url, urlToImage}, index) => (
+                         News.map(({source, description, publishedAt, title, url, urlToImage}, index) => (
                                 <div className={`News  col-${index}`} key={index}>
                                     <div className="imgBox">
                                         <img alt="Imagem da news" src={urlToImage} />
@@ -53,10 +53,7 @@ function NewsContainer({ News, searchError, textSearched }){
                                     </div>
                                 </div>
                             ))
-                        ) : (
-                            <span>Infelizmente a sua busca não retornou em nehum resultado</span>
-                        )
-                }
+                } 
             </section>
      );
 }
