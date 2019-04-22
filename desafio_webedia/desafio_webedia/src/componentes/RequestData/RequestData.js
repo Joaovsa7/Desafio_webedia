@@ -8,13 +8,17 @@ import ErrorComponent from '../Error/Error';
 
 export default function RequestData(){
 
+    //estado para guardar as noticias
     const [ArticlesNews, setArticlesNews] = useState([]);
-    const [country, setCountry] = useState("")
-    const [loading, setLoading] = useState(false)
+    //estado para guardar as informacoes do usuario tais como: pais, pesquisa
+    const [country, setCountry] = useState("");
+    //estado inicial do loading
+    const [loading, setLoading] = useState(false);
+    //estado inicial do error component
     const [error, setError] = useState({error: false, msg:'', reload: false})
-    
+    //consumindo a api
     async function FetchNews(country_key = null, userText = null, signal){
-
+        console.log(window.location.search)
         setLoading(true)
         //carregar as principais noticias do brasil no momento
         let url = `https://newsapi.org/v2/top-headlines?country=br&pageSize=100&apiKey=4712473a768541adbee8210942d58a42`
@@ -24,10 +28,9 @@ export default function RequestData(){
         else if(userText){
             url = `https://newsapi.org/v2/everything?q=${userText}&pageSize=100&apiKey=4712473a768541adbee8210942d58a42`
         }
-        
+
         const data = await fetch(url, {signal: signal})
         const News = await data.json()
-
         if(News.status === "ok"){
             setLoading(false)
             setArticlesNews(News.articles)
@@ -39,14 +42,19 @@ export default function RequestData(){
         }
         if(News.status !== "ok"){
             setError(true)
+            return false
         }
     }
 
     useEffect(() => {
+
         const abortController = new AbortController()
         const signal = abortController.signal
+
         setError(false)
+
         FetchNews(null,null, signal);
+
         return function cleanup(){
             abortController.abort()
         }
@@ -59,7 +67,7 @@ export default function RequestData(){
                     { loading ? ( 
                                 <LoadingComponent /> 
                                 ) : ( 
-                                <CardNews News={ArticlesNews}searchError={error.error} country={country} /> 
+                                <CardNews News={ArticlesNews} searchError={error.error} country={country} /> 
                                 )
                     }
                 </Container>

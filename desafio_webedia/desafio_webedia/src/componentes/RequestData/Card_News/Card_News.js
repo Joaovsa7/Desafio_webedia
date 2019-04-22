@@ -1,9 +1,8 @@
-import React, { Fragment } from 'react';
-import Pagination from '../../Pagination/Pagination';
+import React, { Fragment, useState } from 'react';
 
 
 export default function NewsContainer({ News, country }){
-    console.log(country)
+
     function reduceDescription(description){
         //esta funcao vai reduzir a descricao da noticia quando encontrar o primeiro ponto final
         //caso nao haja nenhuma descricao vindo da api, ela vai sugerir que o usuario clique no titul da noticia para lê-la
@@ -34,21 +33,15 @@ export default function NewsContainer({ News, country }){
             case "":
             case "br": 
                 return country = "do Brasil"
-            break;
             case "us":
                 return country = "dos Estados unidos"
-            break;
-
             case "ar":
                 return country = "da Argentina"
-            break;
-
             case "fr":
                 return country = "da França"
-            break;
             case "search":
                 return country = "baseadas em sua pesquisa"
-            break;
+            default:
         }
     }
 

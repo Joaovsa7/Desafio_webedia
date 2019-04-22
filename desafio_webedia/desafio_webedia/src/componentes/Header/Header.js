@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
+import propTypes from 'prop-types';
 import Logo from "../Logo/Logo";
 import BurgerMobileMenu from './MobileMenuIcon/BurgerMobileMenu';
 import SearchIconMenu from './SearchIcon/SearchIcon';
@@ -13,7 +14,7 @@ export default function Header({ ChangeFetchParams, setCountry }){
     
     return (
         // A lógica aqui é, se a propriedade SearchMobileActive estiver true, alguns itens irão ter display: none
-        <React.Fragment>
+        <Fragment>
             <header>
                 <BurgerMobileMenu searchActive={SearchMobileActive} MobileMenuActive={MobileMenuActive} clickMenu={() => setMobileMenuActive(true)} />
                 <Logo logoPath={require("../../static/img/logo.png")} target={""} searchActive={SearchMobileActive} />
@@ -22,6 +23,11 @@ export default function Header({ ChangeFetchParams, setCountry }){
                 { MobileMenuActive && <OverlayComponent /> }
             </header>
             <HeaderMenu setCountry={setCountry} MobileMenuActive={MobileMenuActive} ChangeFetchParams={ChangeFetchParams} CloseMenu={() => setMobileMenuActive(false)} />
-        </React.Fragment>
+        </Fragment>
         )
     }
+
+Header.propTypes = {
+    ChangeFetchParams: propTypes.func.isRequired,
+    setCountry: propTypes.func.isRequired
+}

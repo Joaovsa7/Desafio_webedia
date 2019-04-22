@@ -10,6 +10,7 @@
         height: 50px;
         border-radius: 50px;
         background-color: $blue_theme;
-        animation: loading 2s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+        animation: loading 7s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+        color: white;
     }
 }
