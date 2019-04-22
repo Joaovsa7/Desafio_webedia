@@ -9,8 +9,8 @@ import ErrorComponent from '../Error/Error';
 export default function RequestData(){
 
     const [ArticlesNews, setArticlesNews] = useState([]);
+    const [country, setCountry] = useState("")
     const [loading, setLoading] = useState(false)
-    const [pages, setPages] = useState([])
     const [error, setError] = useState({error: false, msg:'', reload: false})
     
     async function FetchNews(country_key = null, userText = null, signal){
@@ -24,10 +24,9 @@ export default function RequestData(){
         else if(userText){
             url = `https://newsapi.org/v2/everything?q=${userText}&pageSize=100&apiKey=4712473a768541adbee8210942d58a42`
         }
+        
         const data = await fetch(url, {signal: signal})
         const News = await data.json()
-        const pages = Math.ceil(News / 7);
-        setPages(pages)
 
         if(News.status === "ok"){
             setLoading(false)
@@ -56,11 +55,11 @@ export default function RequestData(){
     return ( 
             <Fragment>
                 <Container>
-                    <Header ChangeFetchParams={FetchNews} setError={setError} />
+                    <Header ChangeFetchParams={FetchNews} setCountry={setCountry} setError={setError} />
                     { loading ? ( 
                                 <LoadingComponent /> 
                                 ) : ( 
-                                <CardNews News={ArticlesNews}searchError={error.error} /> 
+                                <CardNews News={ArticlesNews}searchError={error.error} country={country} /> 
                                 )
                     }
                 </Container>

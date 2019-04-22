@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Pagination from '../../Pagination/Pagination';
-import ErrorComponent from '../../Error/Error';
 
-export default function NewsContainer({ News }){
+
+export default function NewsContainer({ News, country }){
+    console.log(country)
     function reduceDescription(description){
         //esta funcao vai reduzir a descricao da noticia quando encontrar o primeiro ponto final
         //caso nao haja nenhuma descricao vindo da api, ela vai sugerir que o usuario clique no titul da noticia para lê-la
@@ -27,38 +28,54 @@ export default function NewsContainer({ News }){
         return publishedAt.split('T', 1).toString().split("-").reverse().toString().replace(/,/g, "/")
     }
     
-    //formatando a fonte, algumas pesquisas dão o site completo + outras informações, aqui estou recortando
-    //o source caso haja .com.br (estou indentificando isso pelo o ponto final)
-    function formatSourceNews(source){
-        const format = source.indexOf(".")
-        if(format !== -1){
-            return source.slice(0, format).toUpperCase()
-        }
-        else {
-            return source.toUpperCase()
+    //informar para o usuario que a fonte de noticia
+    function informCountryToUser(country){
+        switch(country){
+            case "":
+            case "br": 
+                return country = "do Brasil"
+            break;
+            case "us":
+                return country = "dos Estados unidos"
+            break;
+
+            case "ar":
+                return country = "da Argentina"
+            break;
+
+            case "fr":
+                return country = "da França"
+            break;
+            case "search":
+                return country = "baseadas em sua pesquisa"
+            break;
         }
     }
+
+    //formatando a fonte, algumas pesquisas dão o site completo + outras informações, aqui estou recortando
+    //o source caso haja .com.br (estou indentificando isso pelo o ponto final)
     //Como algumas notícias não possuem o autor no json, preciso verificar
     return ( 
-            <section className="News_container">
-                {
-                    News.map(({ source, description, publishedAt, title, url, urlToImage }, index) => (
-                        <div className={"News"} key={index}>
-                            <div className="imgBox">
-                                <img alt="Imagem da news" src={urlToImage} />
-                            </div>
-                            <div className="infos">
-                                {publishedAt ? ( <span>{formatPublishedAt(publishedAt)}</span> ) : 'Sem data'}
-                                <h3>
-                                    <a href={url} target="_blank" rel="noopener noreferrer">{title}</a>
-                                </h3>
-                                <p className="description">{description ? ( reduceDescription(description) ) : 'Esta matéria não possue uma descrição'}</p>
-                                <p className="author">{source ? ( `POR: ${formatSourceNews(source.name)}` ) : 'POR: DESCONHECIDO'}</p>
-                            </div>
-                        </div>
-                        ))    
-                } 
-            </section>
+            <Fragment>
+                <h1>{`As principais notícias ${informCountryToUser(country)}`}</h1>
+                <section className="News_container">
+                    {
+                        News.map(({ author, description, publishedAt, title, url, urlToImage }, index) => (
+                            <a className={"News"} key={index} href={url} target="_blank" rel="noopener noreferrer">
+                                <div className="imgBox">
+                                    <img alt="Imagem da news" src={urlToImage} />
+                                </div>
+                                <div className="infos">
+                                    {publishedAt ? ( <span>{formatPublishedAt(publishedAt)}</span> ) : 'Sem data'}
+                                    <h3>{title}</h3>
+                                    <p className="description">{description ? ( reduceDescription(description) ) : 'Esta matéria não possue uma descrição'}</p>
+                                    <p className="author">{author ? ( `POR: ${author}` ) : 'POR: DESCONHECIDO'}</p>
+                                </div>
+                            </a>
+                            ))    
+                    } 
+                </section>
+            </Fragment>
         );
 }
         

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import Logo from "../Logo/Logo";
 import BurgerMobileMenu from './MobileMenuIcon/BurgerMobileMenu';
 import SearchIconMenu from './SearchIcon/SearchIcon';
@@ -6,7 +6,7 @@ import SearchBar from './SearchBar/SearchBar';
 import HeaderMenu from './HeaderMenu/HeaderMenu';
 import OverlayComponent from '../OverlayComponent/Overlay';
 
-export default function Header({ ChangeFetchParams, setError }){
+export default function Header({ ChangeFetchParams, setCountry }){
     
     const [SearchMobileActive, setSearchMobileActive] = useState(false);
     const [MobileMenuActive, setMobileMenuActive] = useState(false); 
@@ -18,10 +18,10 @@ export default function Header({ ChangeFetchParams, setError }){
                 <BurgerMobileMenu searchActive={SearchMobileActive} MobileMenuActive={MobileMenuActive} clickMenu={() => setMobileMenuActive(true)} />
                 <Logo logoPath={require("../../static/img/logo.png")} target={""} searchActive={SearchMobileActive} />
                 <SearchIconMenu searchActive={SearchMobileActive} enableSearch={() => setSearchMobileActive(true)} MobileMenuActive={MobileMenuActive} />
-                <SearchBar setError={setError} ChangeFetchParams={ChangeFetchParams} SearchActive={SearchMobileActive} setSearchActive={setSearchMobileActive} CloseSearchBar={() => setSearchMobileActive(false)} />
+                <SearchBar setCountry={setCountry} ChangeFetchParams={ChangeFetchParams} SearchActive={SearchMobileActive} setSearchActive={setSearchMobileActive} CloseSearchBar={() => setSearchMobileActive(false)} />
                 { MobileMenuActive && <OverlayComponent /> }
             </header>
-            <HeaderMenu MobileMenuActive={MobileMenuActive} ChangeFetchParams={ChangeFetchParams} CloseMenu={() => setMobileMenuActive(false)} />
+            <HeaderMenu setCountry={setCountry} MobileMenuActive={MobileMenuActive} ChangeFetchParams={ChangeFetchParams} CloseMenu={() => setMobileMenuActive(false)} />
         </React.Fragment>
         )
     }
