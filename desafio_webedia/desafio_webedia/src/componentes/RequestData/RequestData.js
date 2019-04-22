@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import Header from '../Header/Header';
 import CardNews from './Card_News/Card_News';
 import Footer from '../Footer/Footer';
@@ -10,6 +10,7 @@ export default function RequestData(){
 
     const [ArticlesNews, setArticlesNews] = useState([]);
     const [loading, setLoading] = useState(false)
+    const [pages, setPages] = useState([])
     const [error, setError] = useState({error: false, msg:'', reload: false})
     
     async function FetchNews(country_key = null, userText = null, signal){
@@ -25,8 +26,9 @@ export default function RequestData(){
         }
         const data = await fetch(url, {signal: signal})
         const News = await data.json()
-        const limit = 7
-        News.articles.length = 7
+        const pages = Math.ceil(News / 7);
+        setPages(pages)
+
         if(News.status === "ok"){
             setLoading(false)
             setArticlesNews(News.articles)
@@ -50,17 +52,21 @@ export default function RequestData(){
             abortController.abort()
         }
     }, [])
-    
 
     return ( 
-            <React.Fragment>
+            <Fragment>
                 <Container>
                     <Header ChangeFetchParams={FetchNews} setError={setError} />
-                    { loading ? ( <LoadingComponent /> ) : ( <CardNews News={ArticlesNews} searchError={error.error} setError={setError} /> )}
+                    { loading ? ( 
+                                <LoadingComponent /> 
+                                ) : ( 
+                                <CardNews News={ArticlesNews}searchError={error.error} /> 
+                                )
+                    }
                 </Container>
                 <Footer />
                 {error.error && <ErrorComponent error={error.error} message={error.msg} reloadPage={error.reload}  /> }
-            </React.Fragment>
-     );
+            </Fragment>
+    );
 }
  

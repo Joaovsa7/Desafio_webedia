@@ -9,10 +9,10 @@ export default function ErrorComponent({ message, timeToHide, reloadPage }){
                    
                 setTimeout(async () => { 
                         //caso a pesquisa não encontre nada, ativarei essa prop e a página deverá ser atualizada
-                        if(reloadPage){
+                        if(await reloadPage){
                                 window.location.href = "/"
                         }
-                        await setHide(true) 
+                        setHide(true) 
                 }, timeToHide);
         })
 
