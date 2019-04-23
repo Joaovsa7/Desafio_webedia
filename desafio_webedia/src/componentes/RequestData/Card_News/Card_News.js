@@ -1,7 +1,9 @@
 import React, { Fragment, useState } from 'react';
-
+import LoadMoreBtn from './LoadMoreOrLessBtn/LoadMoreOrLessBtn';
 
 export default function NewsContainer({ News, country }){
+
+    const [maxNews, setNewsNumber] = useState(7)
 
     function reduceDescription(description){
         //esta funcao vai reduzir a descricao da noticia quando encontrar o primeiro ponto final
@@ -45,6 +47,10 @@ export default function NewsContainer({ News, country }){
         }
     }
 
+    //infelizmente eu não pude fazer o componente de paginação como eu queria,
+    //eu não queria simplesmente copiar codigos da internet e sim fazer o meu... 
+    //portando como alternativa criei o botão de "carregar mais" sei que foge do escopo do projeto, mas espero que compreendam.
+
     //formatando a fonte, algumas pesquisas dão o site completo + outras informações, aqui estou recortando
     //o source caso haja .com.br (estou indentificando isso pelo o ponto final)
     //Como algumas notícias não possuem o autor no json, preciso verificar
@@ -53,7 +59,7 @@ export default function NewsContainer({ News, country }){
                 <h1>{`As principais notícias ${informCountryToUser(country)}`}</h1>
                 <section className="News_container">
                     {
-                        News.map(({ author, description, publishedAt, title, url, urlToImage }, index) => (
+                        News.slice(0, maxNews).map(({ author, description, publishedAt, title, url, urlToImage }, index) => (
                             <a className={"News"} key={index} href={url} target="_blank" rel="noopener noreferrer">
                                 <div className="imgBox">
                                     <img alt="Imagem da news" src={urlToImage} />
@@ -67,6 +73,8 @@ export default function NewsContainer({ News, country }){
                             </a>
                             ))    
                     } 
+                    {maxNews > 7 && <LoadMoreBtn text={"Mostrar menos notícias"} onClick={() => setNewsNumber(maxNews - 7)} />}
+                    <LoadMoreBtn onClick={() => setNewsNumber(maxNews + 7)} text={"Mostrar mais notícias"} />
                 </section>
             </Fragment>
         );
