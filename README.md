@@ -9,3 +9,5 @@ Escolhi o ReactJS para cumprir este desafio, porquê hoje estou estudando bastan
 #### O projeto foi hospedado em 
 
 [Desafio webedia React](https://desafio-webedia-react-news.netlify.com/)
+
+Tenho total ciência de que o item de paginação do projeto não foi feito, eu explico isso no comentário do componente Card_News
