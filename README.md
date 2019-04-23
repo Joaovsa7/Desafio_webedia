@@ -6,4 +6,6 @@ Escolhi o ReactJS para cumprir este desafio, porquê hoje estou estudando bastan
 
 ### Sendo assim, eu escolho React e Sass para realizar este projeto.
 
+#### O projeto foi hospedado em 
 
+[Desafio webedia React](https://desafio-webedia-react-news.netlify.com/)
