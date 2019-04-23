@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import LoadMoreBtn from './LoadMoreOrLessBtn/LoadMoreOrLessBtn';
+import propTypes from 'prop-types';
 
-export default function NewsContainer({ News, country }){
+    NewsContainer({ News, country }){
 
     const [maxNews, setNewsNumber] = useState(7)
 
@@ -80,6 +81,12 @@ export default function NewsContainer({ News, country }){
         );
 }
         
+
+NewsContainer.propTypes = {
+    country: propTypes.string.isRequired,
+    News: propTypes.object.isRequired
+}
+
 // Dados que vou consumir da API
 //author
 //description

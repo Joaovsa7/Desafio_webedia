@@ -18,7 +18,6 @@ export default function RequestData(){
     const [error, setError] = useState({error: false, msg:'', reload: false})
     //consumindo a api
     async function FetchNews(country_key = null, userText = null, signal){
-        console.log(window.location.search)
         setLoading(true)
         //carregar as principais noticias do brasil no momento
         let url = `https://newsapi.org/v2/top-headlines?country=br&pageSize=100&apiKey=4712473a768541adbee8210942d58a42`
