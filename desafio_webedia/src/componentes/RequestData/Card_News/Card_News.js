@@ -74,7 +74,7 @@ export default function NewsContainer({ News, country, totalPage, requestPaginat
                             ))    
                     } 
                     {maxNews > 7 && <LoadMoreBtn text={"Mostrar menos notícias"} onClick={() => setNewsNumber(maxNews - 7)} />}
-                    <PaginationComponent pagesNumber={totalPage} requestPagination={requestPagination} fetchParams={fetchParams} />
+                    <PaginationComponent totalPage={totalPage} requestPagination={requestPagination} fetchParams={fetchParams} />
                 </section>
             </Fragment>
         );

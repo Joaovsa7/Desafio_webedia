@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react';
 
-function PaginationComponent({ pagesNumber, fetchParams, requestPagination }){
+function PaginationComponent({ totalPage, fetchParams, requestPagination }){
 
     console.log(fetchParams)
-    console.log(pagesNumber)
+    console.log(totalPage)
 
     const [pages, setPagesArray] = useState([]);
     const array = []
 
-    function calculatePage(pagesNumber){
+    function calculatePage(totalPage){
         //é necessária esta verificacao pq se o usuario pesquisar alguma coisa, a api dá mais de 4mil resultados
-        if(pagesNumber > 10){
-            pagesNumber = 10;
+        if(totalPage > 10){
+            totalPage = 10;
         }
-        for(let i = 0; i < pagesNumber; i++){
+        for(let i = 0; i < totalPage; i++){
             array.push(i + 1)
             setPagesArray(array)
        }
     }
 
     useEffect(() => {
-        if(typeof pagesNumber !== undefined){
-            calculatePage(pagesNumber)
+        if(typeof totalPage !== undefined){
+            calculatePage(totalPage)
         }
         console.log(array)
     }, [])
@@ -41,7 +41,7 @@ function PaginationComponent({ pagesNumber, fetchParams, requestPagination }){
                                 <span key={index} className={index + 1 === pageNumber ? 'item active-page' : 'item'} onClick={() => requestPagination(country, userText ,null, index + 1)}>{pagina}</span>
                             ))
                         }
-                        <span className="item" onClick={pageNumber ? () => requestPagination(country, userText ,null, pageNumber + 1) : null }>>></span>
+                        <span className="item" onClick={pageNumber < totalPage ? () => requestPagination(country, userText ,null, pageNumber + 1) : null }netl>>></span>
                 </div>
             </div>
         </React.Fragment>
