@@ -46,6 +46,7 @@ export default function RequestData(){
         //calculando as paginas
         const totalPage = Math.round(News.totalResults / 7)
         setPages(totalPage)
+        
         if(News.status === "ok"){
             setLoading(false)
             setArticlesNews(News.articles)
@@ -60,7 +61,8 @@ export default function RequestData(){
             setError(true)
             return false
         }
-        
+        //quando o usuario solicitar uma nova pagina, o scroll volta para 0
+        window.scroll(0,0)
     }
     
     useEffect(() => {

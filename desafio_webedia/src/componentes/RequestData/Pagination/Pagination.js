@@ -33,6 +33,7 @@ function PaginationComponent({ pagesNumber, fetchParams, requestPagination }){
         <React.Fragment>
             <div className="pagination">
                 <div id="items">
+                        <span className="item" style={{transform: "matrix(-1, 0, 0, 1, 0, 0)"}} onClick={pageNumber == 1 ? null : () => requestPagination(country, userText ,null, pageNumber - 1)}>>></span>
                         {
                             pages.map((pagina, index) => (
                                 //para deixar o item ativo, usei a logica se o index do numero for o mesmo que o page number,
@@ -40,6 +41,7 @@ function PaginationComponent({ pagesNumber, fetchParams, requestPagination }){
                                 <span key={index} className={index + 1 === pageNumber ? 'item active-page' : 'item'} onClick={() => requestPagination(country, userText ,null, index + 1)}>{pagina}</span>
                             ))
                         }
+                        <span className="item" onClick={pageNumber ? () => requestPagination(country, userText ,null, pageNumber + 1) : null }>>></span>
                 </div>
             </div>
         </React.Fragment>
