@@ -32,10 +32,12 @@
                 width: 60px;
             }
         }
+        > .item.active-page {
+            background-color: $blue_theme;
+            color: white;
+        }
+        > .item.hide {
+            display: none;
+        }
     }
-}
-
-.active-page{
-    background-color: $blue_theme!important;
-    color: white!important;
 }
