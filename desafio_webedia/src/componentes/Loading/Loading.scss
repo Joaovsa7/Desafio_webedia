@@ -11,9 +11,5 @@
         border-radius: 50px;
         background-color: $blue_theme;
         animation: loading 7s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-        color: white;
-        > span {
-            margin-top: 1%;
-        }
     }
 }
