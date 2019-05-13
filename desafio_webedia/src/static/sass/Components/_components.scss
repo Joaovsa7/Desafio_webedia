@@ -1,6 +1,7 @@
 //importando as variaveis 
 @import '../helpers/_variables_animations_mixins.scss';
 //componentes
+@import '../../../componentes/RequestData/Pagination/Pagination.scss';
 @import '../../../componentes/RequestData/Card_News/LoadMoreOrLessBtn/LoadMoreOrLessBtn.scss';
 @import '../../../componentes/Footer/Footer.scss';
 @import '../../../componentes/Error/Error.scss';

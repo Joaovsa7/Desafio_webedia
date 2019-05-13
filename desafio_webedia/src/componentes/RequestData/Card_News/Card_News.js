@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import LoadMoreBtn from './LoadMoreOrLessBtn/LoadMoreOrLessBtn';
+import PaginationComponent from '../Pagination/Pagination'
 
-export default function NewsContainer({ News, country }){
-
+export default function NewsContainer({ News, country, totalPage, requestPagination, fetchParams }){
     const [maxNews, setNewsNumber] = useState(7)
 
     function reduceDescription(description){
@@ -74,12 +74,12 @@ export default function NewsContainer({ News, country }){
                             ))    
                     } 
                     {maxNews > 7 && <LoadMoreBtn text={"Mostrar menos notícias"} onClick={() => setNewsNumber(maxNews - 7)} />}
-                    <LoadMoreBtn onClick={() => setNewsNumber(maxNews + 7)} text={"Mostrar mais notícias"} />
+                    <PaginationComponent pagesNumber={totalPage} requestPagination={requestPagination} fetchParams={fetchParams} />
                 </section>
             </Fragment>
         );
 }
-        
+      
 // Dados que vou consumir da API
 //author
 //description
